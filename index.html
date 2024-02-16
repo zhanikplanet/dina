@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="form-container" id="loginForm">
+                <h2>Login</h2>
+                <form>
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required>
+                    <br>
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required>
+                    <br>
+                    <button type="button" id="loginBtn">Login</button>
+                </form>
+                <div class="toggle-btn" onclick="toggleForm()">Switch to Registration</div>
+            </div>
+
+            <div class="form-container" id="registrationForm" style="display: none;">
+                <h2>Registration</h2>
+                <form>
+                    <label for="regName">Name:</label>
+                    <input type="text" id="regName" name="regName" required>
+                    <br>
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" name="regEmail" required>
+                    <br>
+                    <label for="regPassword">Password:</label>
+                    <input type="password" id="regPassword" name="regPassword" required>
+                    <br>
+                    <button type="button" id="registerBtn">Register</button>
+                </form>
+                <div class="toggle-btn" onclick="toggleForm()">Switch to Login</div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div id="myDIV" class="header">
+                <h2>To Do List</h2>
+                <span class="addBtn">Add</span>
+                <span class="changeBtn">Change user</span>
+                <p id="postResponse"></p>
+                <dialog class="dialog">
+                    <h2>New Task</h2>
+                    <form id="taskForm">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" placeholder="Enter title" required><br><br>
+
+                        <label for="content">Content:</label><br>
+                        <textarea id="content" placeholder="Enter content" rows="4" required></textarea><br><br>
+
+                        <div class="difficulty-options">
+                            <label>Difficulty:</label><br>
+                            <input type="radio" id="easy" name="difficulty" value="easy" required>
+                            <label for="easy">Easy</label><br>
+
+                            <input type="radio" id="medium" name="difficulty" value="medium">
+                            <label for="medium">Medium</label><br>
+
+                            <input type="radio" id="hard" name="difficulty" value="hard">
+                            <label for="hard">Hard</label><br><br>
+                        </div>
+
+                        <button type="button" id="submit">Create Task</button>
+                        <button type="reset" id="cancel">Cancel</button>
+                    </form>
+                </dialog>
+            </div>
+
+            <div id="tasks">
+                <h3>Tasks</h3>
+                <ul id="myUL">
+                    <p id="getResponse"></p>
+                </ul>
+            </div>
+
+            <div id="completedTasks">
+                <h3>Completed Tasks</h3>
+                <ul id="completedUL">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
