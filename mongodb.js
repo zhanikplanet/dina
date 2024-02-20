@@ -28,7 +28,7 @@ async function createTask(title, content, difficulty, isCompleted, userId) {
         if (!title || !content || !difficulty)
             throw new Error('Missing required parameters');
 
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('TaskList');
 
      
@@ -51,7 +51,7 @@ async function createUser(name, email, password) {
     try {
         if (!name || !email || !password)
             throw new Error('Missing required parametres')
-        const database = client.db('ToDoList')
+        const database = client.db('labwork2')
         const collection = database.collection('users')
         const result = await collection.insertOne({ name, email, password })
         if (result.acknowledged)
@@ -68,7 +68,7 @@ async function getTask(userId) {
     console.log(userId)
     const userIdObject = new ObjectId(userId);
     try {
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('TaskList');
         const result = await collection.find({ userId: userIdObject }).toArray();
         console.log(result)
@@ -83,7 +83,7 @@ async function getCompletedTask(userId) {
     console.log(userId)
     const userIdObject = new ObjectId(userId);
     try {
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('TaskList');
         const result = await collection.find({ userId: userIdObject, isCompleted: true }).toArray(); 
         console.log(result)
@@ -98,7 +98,7 @@ async function getCompletedTask(userId) {
 async function getLoginUser(loginEmail) {
     console.log(loginEmail)
     try {
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('users');
         const user = await collection.findOne({ email: loginEmail });
         console.log(user)
@@ -115,7 +115,7 @@ async function deleteTasks(id) {
     try {
         if (!id)
             throw new Error('Missing required parameter')
-        const database = client.db('ToDoList')
+        const database = client.db('labwork2')
         const collection = database.collection('TaskList')
         const result = await collection.deleteOne({ _id: new ObjectId(id) })
         return result.deletedCount > 0
@@ -129,7 +129,7 @@ async function deleteTasks(id) {
 
 async function updateTask(id, isCompleted) {
     try {
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('TaskList');
         const result = await collection.updateOne(
             { _id: new ObjectId(id) },
@@ -144,7 +144,7 @@ async function updateTask(id, isCompleted) {
 
 async function checkEmailUnique(email) {
     try {
-        const database = client.db('ToDoList');
+        const database = client.db('labwork2');
         const collection = database.collection('users');
         const existingUser = await collection.findOne({ email });
         return !existingUser; 
